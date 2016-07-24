@@ -1,0 +1,30 @@
+{
+  "name": "tut.by-ui-mail-test",
+  "version": "1.0.0",
+  "description": "tut.by-ui-mail-test",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DmitryRomaniuk/tut.by-ui-mail-test.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DmitryRomaniuk/tut.by-ui-mail-test/issues"
+  },
+  "homepage": "https://github.com/DmitryRomaniuk/tut.by-ui-mail-test#readme",
+  "dependencies": {
+    "babyparse": "^0.4.6",
+    "mongoose": "^4.5.6",
+    "nconf": "^0.8.4",
+    "nodemailer": "^2.5.0",
+    "nodemailer-smtp-transport": "^2.6.0",
+    "sax": "^1.2.1",
+    "selenium-webdriver": "^2.53.3",
+    "winston": "^2.2.0"
+  }
+}
