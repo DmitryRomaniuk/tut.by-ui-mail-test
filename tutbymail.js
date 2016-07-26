@@ -115,7 +115,21 @@ function nextStepSyncProgramm() {
         driver.manage().window().maximize();
         driver.manage().deleteAllCookies();
         driver.get('https://mail.tut.by/');
+        driver.takeScreenshot().then(function (data) {
+            var date = new Date(Date.now());
+            date = date.toISOString();
+            date = date.replace(/:/g, "-");
+            var nameFile = "img-" + date + ".png";
+            fs.writeFileSync(nameFile, data, 'base64');
+        });
         driver.findElement(By.name('login')).sendKeys(user.user);
+        driver.takeScreenshot().then(function (data) {
+            var date = new Date(Date.now());
+            date = date.toISOString();
+            date = date.replace(/:/g, "-");
+            var nameFile = "img-" + date + ".png";
+            fs.writeFileSync(nameFile, data, 'base64');
+        });
         driver.findElement(By.name('password')).sendKeys(user.pass);
         driver.takeScreenshot().then(function (data) {
             var date = new Date(Date.now());
@@ -125,7 +139,21 @@ function nextStepSyncProgramm() {
             fs.writeFileSync(nameFile, data, 'base64');
         });
         driver.findElement(By.className('loginButton')).click();
-        driver.wait(until.elementLocated(By.css("a[href=\"#sent\"]")), 5000);
+        driver.takeScreenshot().then(function (data) {
+            var date = new Date(Date.now());
+            date = date.toISOString();
+            date = date.replace(/:/g, "-");
+            var nameFile = "img-" + date + ".png";
+            fs.writeFileSync(nameFile, data, 'base64');
+        });
+        driver.wait(until.elementLocated(By.css("a[href=\"#sent\"]")), 15000);
+        driver.takeScreenshot().then(function (data) {
+            var date = new Date(Date.now());
+            date = date.toISOString();
+            date = date.replace(/:/g, "-");
+            var nameFile = "img-" + date + ".png";
+            fs.writeFileSync(nameFile, data, 'base64');
+        });
         driver.findElement(By.css("a[href=\"#sent\"]")).click();
         driver.close();
     });
