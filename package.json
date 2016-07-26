@@ -4,7 +4,7 @@
   "description": "tut.by-ui-mail-test",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "set NODE_PATH=. && node tutbymail.js"
   },
   "repository": {
     "type": "git",

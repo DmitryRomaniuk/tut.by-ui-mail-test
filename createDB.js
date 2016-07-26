@@ -1,16 +1,20 @@
 var mongoose = require('./lib/mongoose');
 var async = require('async');
 
-async.series([
-    open,
-    dropDatabase,
-    requireModels,
-    createUsers
-], function(err) {
-    console.log(arguments);
-    mongoose.disconnect();
-    process.exit(err ? 255 : 0);
-});
+function getUsers(data,callback) {
+    async.series([
+        open,
+        dropDatabase,
+        requireModels,
+        createUsers,
+        listUser
+    ], function(err) {
+        data.users=listUsers;
+        mongoose.disconnect();
+        callback();
+    });
+}
+
 
 function open(callback) {
     mongoose.connection.on('open', callback);
@@ -30,10 +34,7 @@ function requireModels(callback) {
 }
 
 function createUsers(callback) {
-
     var users = [
-        {user: 'test-user-6-simple@tut.by', pass: '12345678'},
-        {user: 'test-user-8-simple@tut.by', pass: '12345678'},
         {user: 'test-user-9-simple@tut.by', pass: '12345678'},
         {user: 'test-user-10-simple@tut.by', pass: '12345678'}
     ];
@@ -41,5 +42,16 @@ function createUsers(callback) {
     async.each(users, function(userData, callback) {
         var user = new mongoose.models.User(userData);
         user.save(callback);
-    }, callback);
+    },callback);
 }
+var listUsers;
+
+function listUser(callback) {
+    var User = require('./models/user').User;
+        User.find({},function (err,users){
+            if(err) throw err;
+            listUsers=users;
+            callback()
+        })
+}
+module.exports = getUsers;

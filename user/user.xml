@@ -1,3 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <user name="test-user-1-simple@tut.by" pass="12345678"/>
-<user name="test-user-2-simple@tut.by" pass="87654321"/>
+<user name="test-user-2-simple@tut.by" pass="12345678"/>
+<user name="test-user-3-simple@tut.by" pass="12345678"/>
+<user name="test-user-4-simple@tut.by" pass="12345678"/>
